@@ -1,145 +1,73 @@
-//Question--1//----------------------------
-var str1 = "Today is";
-var str2 = "      a beautiful day     ";
-var str3 = " In Hawaii.     ";
+// Assignment ---2---------------------------------------
 
-str2 = str2.trim();
-str3 = str3.trim();
-var result = str1 + " " + str2 + " " + str3;
-console.log(result);
+// Answer--1------------------
 
-//Question--2//------------------------------
+function elementExist(arr, element) {
+  var position = [];
+  for (var i = 0; i < arr.length; i++)
+    if (arr[i] === element) {
+      position.push(i);
+    }
 
-var enteredAlphabet;
-enteredAlphabet = prompt("Enter Alphabet");
+  if (position.length === 0) {
+    return -1;
+  } else if (position.length === 1) {
+    return position[0];
+  } else {
+    return position;
+  }
+}
+var arr = [1, 2, 3, 4, 5, 1, 3],
+  element = 3;
 
-switch (enteredAlphabet) {
-  case "a":
-  case "e":
-  case "i":
-  case "o":
-  case "u":
-  case "A":
-  case "E":
-  case "I":
-  case "O":
-  case "U":
-    console.log(enteredAlphabet + " is a vowel.");
-    break;
-  case "b":
-  case "c":
-  case "d":
-  case "f":
-  case "g":
-  case "h":
-  case "j":
-  case "k":
-  case "l":
-  case "m":
-  case "n":
-  case "p":
-  case "q":
-  case "r":
-  case "s":
-  case "t":
-  case "v":
-  case "w":
-  case "x":
-  case "y":
-  case "z":
-  case "B":
-  case "C":
-  case "D":
-  case "F":
-  case "G":
-  case "H":
-  case "J":
-  case "K":
-  case "L":
-  case "M":
-  case "N":
-  case "P":
-  case "Q":
-  case "R":
-  case "S":
-  case "T":
-  case "V":
-  case "W":
-  case "X":
-  case "Y":
-  case "Z":
-    console.log(enteredAlphabet + " is a consonant.");
-    break;
-  default:
-    console.log(enteredAlphabet + " is not an alphabet");
-    break;
+console.log(elementExist(arr, element));
+
+//Answer--2---------------------------------------------
+
+var n = 5;
+var string = "";
+for (var i = 1; i <= n; i++) {
+  for (var j = 1; j <= n - i + 1; j++) {
+    string += n - j + 1;
+  }
+  string += "\n";
+}
+console.log(string);
+
+// Answer--3-----------------------------------------------------
+
+function sortAscending(arr) {
+  return arr.sort((a, b) => a - b);
 }
 
-//Question--3//---------------------------------------
+console.log(sortAscending([3, 2, 1, 4, 5, 45]));
 
-var opt = prompt(
-  "1-Addition.\n2-Substraction.\n3-Multiplication.\n4-Division.\nEnter Your Choice"
-);
+//Answer--4--------------------------------------------
 
-var num1 = 0,
-  num2 = 0;
+function isAnagram(str1, str2) {
+  if (str1.length !== str2.length) return false;
 
-switch (opt) {
-  case "1":
-    num1 = parseFloat(prompt("Enter first Number"));
-    num2 = parseFloat(prompt("Enter Second Number"));
-    console.log(`${num1} + ${num2} = ${num1 + num2}`);
-    break;
-  case "2":
-    num1 = parseFloat(prompt("Enter first Number"));
-    num2 = parseFloat(prompt("Enter Second Number"));
-    console.log(`${num1} - ${num2} = ${num1 - num2}`);
-    break;
-  case "3":
-    num1 = parseFloat(prompt("Enter first Number"));
-    num2 = parseFloat(prompt("Enter Second Number"));
-    console.log(`${num1} * ${num2} = ${num1 * num2}`);
-    break;
-  case "4":
-    num1 = parseFloat(prompt("Enter first Number"));
-    num2 = parseFloat(prompt("Enter Second Number"));
-    console.log(`${num1} / ${num2} = ${num1 / num2}`);
-    break;
-  default:
-    alert("Invalid operator");
-    break;
+  var str1Chars = str1.split("").sort();
+  var str2Chars = str2.split("").sort();
+
+  for (var i = 0; i < str1Chars.length; i++) {
+    if (str1Chars[i] !== str2Chars[i]) return false;
+  }
+
+  return true;
 }
 
-//Question--4-----------------------------------------------------
+console.log(isAnagram("LISTEN", "SILENT"));
+console.log(isAnagram("HELLO", "JELLO"));
 
-var side1, side2, side3;
-side1 = parseInt(prompt("Enter 1st side of Triangle"));
-side2 = parseInt(prompt("Enter 2st side of Triangle"));
-side3 = parseInt(prompt("Enter 3st side of Triangle"));
+//Answer--5------------------------------------------------------
 
-if (side1 === side2 && side2 === side3) {
-  console.log("equilateral");
-} else if (side1 === side2 || side1 === side3 || side2 === side3) {
-  console.log("isosceles");
-} else {
-  console.log("scalene");
+function reverseString(str) {
+  let reversed = "";
+  for (var i = str.length - 1; i >= 0; i--) {
+    reversed += str[i];
+  }
+  return reversed;
 }
 
-//Question--5------------------------------------------
-
-var units = parseFloat(prompt("Enter the number of units"));
-var bill = 0;
-
-if (units <= 50) {
-  bill = units * 0.5;
-} else if (units <= 150) {
-  bill = 50 * 0.5 + (units - 50) * 0.75;
-} else if (units <= 250) {
-  bill = 50 * 0.5 + 100 * 0.75 + (units - 150) * 1.2;
-} else {
-  bill = 50 * 0.5 + 100 * 0.75 + 100 * 1.2 + (units - 250) * 1.5;
-}
-
-bill = bill * 1.2; // add surcharge of 20%
-
-console.log(`Total bill: ${bill}`);
+console.log(reverseString("hello"));
